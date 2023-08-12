@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-background{
+    background-color: #B2BEB5;
+}
+
+.navbar-brand{
+    font-size: 1.875rem;
+}
+
+.nav-item{
+    font-size: 1.5rem;
+}
+
+.main-backround{
+    background-color:#C0C0C0;
+    padding: 20px;
+    min-height: calc(100vh - 112px); 
+}
+
+@media (max-width: 768px) {
+    .main-background {
+        min-height: calc(100vh - 162px);
+    }
+}
+
+.container{
+    font-size: 1.25rem;
+    max-width: none;
+    padding: 0;
+}
+
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #B2BEB5;
+    padding: 1rem;
+}
+
+body {
+    margin: 0;
+}
+
+p{
+    margin: 0;
+    
+}
+
+.section-column{
+    display: flex;
+    flex-direction: column;
+    padding: 0 30rem;
+}
+
+.form-control{
+    width: 50%;
+}
+
+.btn-primary{
+    width: 10%;
+}
+
+.btn-eliminar{
+    background-color: red;
+    border-color: red;
+    width: 5%;
+}
+
+.div-padding{
+    padding-left: 50rem;
+}
+
+.margin-button{
+    margin-left: 1rem;
+}
