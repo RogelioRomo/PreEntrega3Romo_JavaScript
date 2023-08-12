@@ -1,3 +1,6 @@
+//ESTE JS ESTA COMO BACKUP DE CODIGO VIEJO NO ES FUNCIONAL. SOLO ES PARA AYUDA PERSONAL.
+
+
 
 //En este bloque creamos/declaramos una clase. Se declaran tambien los datos que tendra
 class Alumno {
