@@ -59,9 +59,7 @@ function crearTabla() {//funcion para creacion de una tabla
     });
 }
 
-btn.addEventListener("click", function(e) {
-    let alumno = crearAlumno(e);
+btn.addEventListener("click", function(e) {//boton de submit para que se ejecuten lo del form y que se cree la tabla en consecuencia
+    crearAlumno(e);
     crearTabla();
 });
-
-btn.addEventListener("click", crearAlumno);//boton de submit para que se ejecuten lo del form y que se cree la tabla en consecuencia
