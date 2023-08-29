@@ -1,5 +1,4 @@
 let alumnos = []; //array para almacenar los objetos que se crean mas adelante
-let form = document.querySelector("form"); //un queryselector para el form que no he utilizado
 let nombre = document.getElementById("nombre-alumno"); //la referencia del DOM para tomar el valor de ese ID
 let apellido = document.getElementById("apellido-alumno"); //la referencia del DOM para tomar el valor de ese ID
 let primerParcial = document.getElementById("primer-parcial"); //la referencia del DOM para tomar el valor de ese ID
@@ -7,7 +6,24 @@ let segundoParcial = document.getElementById("segundo-parcial"); //la referencia
 let tercerParcial = document.getElementById("tercer-parcial"); //la referencia del DOM para tomar el valor de ese ID
 let btn = document.getElementById("btn-submit"); //la referencia del DOM para tomar el valor de ese ID
 let lista = document.getElementById("list"); //la referencia del DOM para tomar el valor de ese ID
+const hora = document.querySelector("#tiempo");
+const apiData = document.getElementById("api-data");
 
+fetch("http://worldtimeapi.org/api/ip")//fetch para llamar a la API del tiempo
+    .then(response => response.json())
+    .then(data => {
+        const zona = data.timezone; //creamos las constantes de los datos del objeto que queremos obtener para mostrar
+        const tiempo = data.datetime;
+        //se crea htmlContent para de esta manera poder manipular el DOM creando textos que muestren los datos recopilados de la API
+        const htmlContent = `
+                    <h2>Zona: ${zona}</h2>
+                    <p>Fecha y hora: ${tiempo}</p>
+                `;
+        apiData.innerHTML = htmlContent;//aqui finaliza ya mostrando los datos que tomo del htmlContent
+    })
+    .catch(error => {
+        console.log(error)
+    });
 
 class Alumno {//En este bloque creamos/declaramos una clase/objeto. Se declaran tambien los datos que tendra
     constructor(nombre, apellido, calificacion1, calificacion2, calificacion3, calificacionFinal) { //aqui se inicializa una nueva instancia
@@ -52,7 +68,7 @@ function crearTabla() {//funcion para creacion de una tabla
     filaPrincipal.innerHTML = "<th>Nombre</th><th>Apellido</th><th>Parcial 1</th><th>Parcial 2</th><th>Parcial 3</th><th>Calificación Final</th>";
     tabla.appendChild(filaPrincipal);
 
-    alumnos.forEach(alumno => {//creamos dependiendo del input del usuario las filas con los datos ingresados en la tabla. Aqui hay un error revisar despues.
+    alumnos.forEach(alumno => {//creamos dependiendo del input del usuario las filas con los datos ingresados en la tabla.
         let fila = document.createElement("tr");
         fila.innerHTML = `<td>${alumno.nombre}</td><td>${alumno.apellido}</td><td>${alumno.calificacion1}</td><td>${alumno.calificacion2}</td><td>${alumno.calificacion3}</td><td>${alumno.calificacionFinal}</td>`;
         tabla.appendChild(fila);
@@ -66,5 +82,4 @@ btn.addEventListener("click", function (e) {//boton de submit para que se ejecut
         duration: 3000
     }).showToast();
     crearTabla();
-});
-
+}); 
