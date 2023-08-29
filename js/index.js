@@ -20,21 +20,21 @@ class Alumno {//En este bloque creamos/declaramos una clase/objeto. Se declaran 
     }
 }
 
-function crearAlumno(e){//creamos una funcion para ingresar los datos que el objeto leera y guardara para crearse
+function crearAlumno(e) {//creamos una funcion para ingresar los datos que el objeto leera y guardara para crearse
     e.preventDefault();
     let name = nombre.value;
     let lastname = apellido.value;
     let firstScore = Number(primerParcial.value); //importante especificar siempre que sea un numero. Recordar que fallo el valor del promedio por esta razon
     let secondScore = Number(segundoParcial.value);
     let thirdScore = Number(tercerParcial.value);
-    let average = (firstScore + secondScore + thirdScore)/3;//se calcula el promedio
+    let average = (firstScore + secondScore + thirdScore) / 3;//se calcula el promedio
     average = average.toFixed(2); //se limitan los decimales a 2
     nombre.value = ""; //para limpiar el imput en el DOM y que no se queden lo valores depues de darle submit
     apellido.value = "";
     primerParcial.value = "";
     segundoParcial.value = "";
     tercerParcial.value = "";
-    let alumno = new Alumno (name, lastname, firstScore, secondScore, thirdScore, average)//Creamos un nuevo alumno con los datos inresados por el usuario
+    let alumno = new Alumno(name, lastname, firstScore, secondScore, thirdScore, average)//Creamos un nuevo alumno con los datos inresados por el usuario
     console.log(alumno);//para mostrar los valores del array en consola. Solo como referencia para el coder
     alumnos.push(alumno);//mandamos los valores al array 'alumnos' declarado en la linea #1
     localStorage.setItem("alumnos", JSON.stringify(alumnos));
@@ -59,7 +59,12 @@ function crearTabla() {//funcion para creacion de una tabla
     });
 }
 
-btn.addEventListener("click", function(e) {//boton de submit para que se ejecuten lo del form y que se cree la tabla en consecuencia
+btn.addEventListener("click", function (e) {//boton de submit para que se ejecuten lo del form y que se cree la tabla en consecuencia
     crearAlumno(e);
+    Toastify({
+        text: "Alumno agregado!",
+        duration: 3000
+    }).showToast();
     crearTabla();
 });
+
